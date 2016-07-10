@@ -75,19 +75,6 @@
 			return $this->image;
 		}
 		
-		public function generatePictureWithWatermark() {
-			$watermark = imagecreatefrompng("stamp/watermark.png");
-			$wmX = imagesx($watermark);
-			$wmY = imagesy($watermark);
-		
-				
-			imagecopy($this->imgOutputStreamStream,
-					$watermark,
-					imagesx($this->imgOutputStreamStream) - $wmX - 16,
-					imagesy($this->imgOutputStreamStream) - $wmY - 16,
-					0, 0, imagesx($watermark), imagesy($watermark));
-		}
-		
 		/**
 		 * Outputs the generated Image to the Caller
 		 */
