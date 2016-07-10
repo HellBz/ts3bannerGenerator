@@ -54,8 +54,9 @@
 		}
 		
 		/**
-		 * @deprecated
-		 * Do not use this Method since it breaks the encapsulation of the list
+		 * Returns an Array with all saved Item IDs
+		 * @return NULL[]
+		 * Array of all IDs of the List
 		 */
 		public function getItemIDList() {
 			$itemIDList = array();
