@@ -10,6 +10,7 @@
 	 */
 	class Item {
 		private $itemID;
+		private $itemName;
 		private $object;
 		
 		public function __construct($itemID, $object) {
@@ -24,6 +25,15 @@
 		 */
 		public function getItemID() : int {
 			return $this->itemID;
+		}
+		
+		/**
+		 * Returns a Nameidentifier of the Item
+		 * @return string
+		 * Value of type String
+		 */
+		public function getItemName() {
+			return $this->itemName;
 		}
 		
 		/**

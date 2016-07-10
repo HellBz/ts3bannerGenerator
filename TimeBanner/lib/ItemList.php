@@ -169,7 +169,7 @@
 		}
 		
 		/**
-		 * Key of the wanted Item
+		 * Returns Objectreference of the wanted Item by given Key
 		 * @param unknown $key
 		 * Accepts either value of type String or Integer
 		 * @return mixed
@@ -184,7 +184,7 @@
 		}
 		
 		/**
-		 * ID of the wanted Item
+		 * Returns Objectreference of the wanted Item by given ID
 		 * @param unknown $id
 		 * Accepts value of type Integer
 		 * @return mixed
@@ -197,5 +197,18 @@
 				}
 			}
 			return NULL;
+		}
+		
+		/**
+		 * Returns Objectreference of the wanted Item by given Nameidentifier
+		 * @param string
+		 * Accepts value of type String
+		 */
+		public function getItemByName($name) {
+			foreach($this->itemList as $item) {
+				if($item->getItemName() === $name) {
+					return $item;
+				}
+			}
 		}
 	}
