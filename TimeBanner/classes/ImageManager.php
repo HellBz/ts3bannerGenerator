@@ -73,6 +73,10 @@
 			return $this->image;
 		}
 		
+		public function setImage() {
+			$this->image = $this->imageList->getItemByID(0)->getObject()->getImageResourceIdentifier();
+		}
+		
 		public function generatePictureWithWatermark() {
 			$watermark = imagecreatefrompng("stamp/watermark.png");
 			$wmX = imagesx($watermark);

@@ -10,11 +10,11 @@
 	 */
 	class Image {
 		private $imageResourceIdentifier;
-		private $imagePath;
+		private $imageName;
 		
-		public function __construct($imagePath) {
-			$this->imagePath = $imagePath;
-			$this->imageResourceIdentifier = @imagecreatefrompng($this->imagePath);
+		public function __construct($imageName) {
+			$this->imageName = $imageName;
+			$this->imageResourceIdentifier = @imagecreatefrompng($this->imageName);
 		}
 		
 		/**
@@ -27,11 +27,11 @@
 		}
 		
 		/**
-		 * Returns the Path as String of the Image
+		 * Returns the Imagename as String
 		 * @return string
 		 * Value of type String
 		 */
-		public function getImagePath() : string {
-			return $this->imagePath;
+		public function getImageName() {
+			return $this->imageName;
 		}
 	}

@@ -19,11 +19,5 @@
 	$frid = $fitem->getImageResourceIdentifier();
 	//print_r($fitem);
 	
-	$list = new ItemList();
-	$list->addItem(new Image("template/template.png"));
-	$item = $list->getItemByID(0)->getObject();
-	$rid = $item->getImageResourceIdentifier();
-	//print_r($item);
-	
 	header("Content-Type: image/png");
 	imagepng($frid);
