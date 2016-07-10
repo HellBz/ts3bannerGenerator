@@ -203,11 +203,30 @@
 		 * Returns Objectreference of the wanted Item by given Nameidentifier
 		 * @param string
 		 * Accepts value of type String
+		 * @return mixed
+		 * Returns either the Reference of wanted Object or NULL if no such object could be found
 		 */
 		public function getItemByName($name) {
 			foreach($this->itemList as $item) {
 				if($item->getItemName() === $name) {
 					return $item;
+				}
+			}
+			return NULL;
+		}
+		
+		/**
+		 * Returns an Array of Items matching the given Name
+		 * @param $needle
+		 * Accepts value of type String
+		 * @return $itemMatch
+		 * Returns an Array of Objectreferences
+		 */
+		public function getItemsByMatch($needle) {
+			$itemMatch = array();
+			foreach($this->itemList as $item) {
+				if(strpos($item->getItemName, $needle)) {
+					$itemMatch[] = $item;
 				}
 			}
 		}
