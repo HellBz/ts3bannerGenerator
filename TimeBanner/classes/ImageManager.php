@@ -16,8 +16,8 @@
 		private $image;
 		
 		public function __construct() {
-			$this->templateDirectory = "template/";
 			$this->imageList = new ItemList();
+			$this->templateDirectory = "template/";
 			$this->prepareImageList();
 		}
 		
@@ -33,7 +33,7 @@
 		private function prepareImageList() {
 			foreach(scandir($this->templateDirectory) as $templateFileName) {
 				if((strcmp($templateFileName, ".") !== 0) && (strcmp($templateFileName, "..") !== 0)) {
-					$this->imageList->addItem(new Image($this->templateDirectory.$templateFileName));
+					$this->imageList->addItem(new Image($this->templateDirectory.$templateFileName), null, $templateFileName);
 				}
 			}
 		}
@@ -73,6 +73,26 @@
 		 */
 		public function getImage() {
 			return $this->image;
+		}
+		
+		/**
+		 * Draws a String (Time) to the Image given by the parameter $image
+		 * @param mixed $image
+		 * Accepts Imagestream
+		 * @param string $string
+		 * Accepts value of type String
+		 * @param int $x
+		 * Accepts value of type Integer
+		 * Represents the X coordinate to draw on
+		 * @param int $y
+		 * Accepts Value of type Integer
+		 * Represents the Y coordinate to draw on
+		 */
+		public function drawTimeStampOnImage($image, $x, $y, $font = 1, $string = null) {
+			$colorImg = imagecreate(1, 1);
+			$textColor = imagecolorallocate($colorImg, 0, 0, 0);
+			
+			imagestring($image, $font, $x, $y, ($string !== NULL) ? $string : $this->GetTimeHHMM(), $textColor);
 		}
 		
 		/**

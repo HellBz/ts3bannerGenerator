@@ -73,11 +73,11 @@
 		 * @param mixed $key
 		 * Accepts values of type Integer or String
 		 */
-		public function addItem($object, $key = null) {
+		public function addItem($object, $key = null, $name = null) {
 			if(isset($key)) {
-				$this->itemList[$key] = new Item($this->itemListCount, $object);
+				$this->itemList[$key] = new Item($this->itemListCount, $object, $name);
 			} else {
-				$this->itemList[] = new Item($this->itemListCount, $object);
+				$this->itemList[] = new Item($this->itemListCount, $object, $name);
 			}
 			$this->itemListChanged();
 		}
@@ -219,15 +219,16 @@
 		 * Returns an Array of Items matching the given Name
 		 * @param $needle
 		 * Accepts value of type String
-		 * @return $itemMatch
+		 * @return Array $itemMatch
 		 * Returns an Array of Objectreferences
 		 */
-		public function getItemsByMatch($needle) {
+		public function getItemsByNameMatch($needle) {
 			$itemMatch = array();
 			foreach($this->itemList as $item) {
-				if(strpos($item->getItemName, $needle)) {
+				if((strcmp($item->getItemName(), $needle) !== false)) {
 					$itemMatch[] = $item;
 				}
 			}
+			return $itemMatch;
 		}
 	}

@@ -14,9 +14,11 @@
 	//Create Objects
 	$imgMgr = new ImageManager();
 	$imgList = $imgMgr->getImageList();
-	$item = $imgList->getItemByID(0);
+	$items = $imgList->getItemsByNameMatch("template");
+	$item = $items[0];
 	$itemRef = $item->getObject();
 	$rid = $itemRef->getImageResourceIdentifier();
+	$imgMgr->drawTimeStampOnImage($rid, 10, 10, 5);
 
 	
 	header("Content-Type: image/png");

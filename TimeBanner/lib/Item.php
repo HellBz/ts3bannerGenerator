@@ -13,8 +13,9 @@
 		private $itemName;
 		private $object;
 		
-		public function __construct($itemID, $object) {
+		public function __construct($itemID, $object, $itemName = null) {
 			$this->itemID = $itemID;
+			$this->itemName = $itemName;
 			$this->object = $object;
 		}
 		
