@@ -12,12 +12,12 @@
 	require_once 'classes/Image.php';
 	
 	//Create Objects
-	$f = new ImageManager();
-	$fl = $f->getImageList();
-	$fl->addItem(new Image("template/template.png"), 0);
-	$fitem = $fl->getItemByKey(0)->getObject();
-	$frid = $fitem->getImageResourceIdentifier();
-	//print_r($fitem);
+	$imgMgr = new ImageManager();
+	$imgList = $imgMgr->getImageList();
+	$item = $imgList->getItemByID(0);
+	$itemRef = $item->getObject();
+	$rid = $itemRef->getImageResourceIdentifier();
+
 	
 	header("Content-Type: image/png");
-	imagepng($frid);
+	imagepng($rid);

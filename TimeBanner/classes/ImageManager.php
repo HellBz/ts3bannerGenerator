@@ -32,7 +32,9 @@
 		 */
 		private function prepareImageList() {
 			foreach(scandir($this->templateDirectory) as $templateFileName) {
-				$this->imageList->addItem(new Image($templateFileName));
+				if((strcmp($templateFileName, ".") !== 0) && (strcmp($templateFileName, "..") !== 0)) {
+					$this->imageList->addItem(new Image($this->templateDirectory.$templateFileName));
+				}
 			}
 		}
 		
