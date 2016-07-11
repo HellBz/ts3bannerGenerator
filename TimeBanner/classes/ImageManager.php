@@ -33,7 +33,7 @@
 		private function prepareImageList() {
 			foreach(scandir($this->templateDirectory) as $templateFileName) {
 				if((strcmp($templateFileName, ".") !== 0) && (strcmp($templateFileName, "..") !== 0)) {
-					$this->imageList->addItem(new Image($this->templateDirectory.$templateFileName), null, $templateFileName);
+					$this->imageList->addItem(new Image($this->templateDirectory, $templateFileName));
 				}
 			}
 		}
