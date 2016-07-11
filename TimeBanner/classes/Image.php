@@ -16,7 +16,7 @@
 		public function __construct($imageFilePath, $imageFileName) {
 			$this->imageFileName = $imageFileName;
 			$this->imageFilePath = $imageFilePath;
-			$this->imageResourceIdentifier = @imagecreatefrompng($this->imageFilePath.$this->imageFileName);
+			$this->imageResourceIdentifier = @imagecreatefrompng($this->imageFilePath . $this->imageFileName);
 		}
 		
 		/**
