@@ -19,9 +19,12 @@
 	if(isset($_GET)) {
 		try {
 			$imageName = $_GET['name'];
-			$imageX = $_GET['axisX'];
-			$imageY = $_GET['axisY'];
-			$imageFont = $_GET['font'];
+			$fontsize = $_GET['size'];
+			$angle = $_GET['angle'];
+			$x = $_GET['x'];
+			$y = $_GET['y'];
+			//$color = $_GET['color'];
+			$font = $_GET['font'];
 			outputImage();
 		} catch (Exception $e) {
 			echo "An Error occured: " . $e->getMessage();
@@ -32,15 +35,15 @@
 	
 	function outputImage() {
 		//Create Objects
-		global $imageName, $imageX, $imageY, $imageFont;
+		global $imageName, $fontsize, $angle, $x, $y, $color, $font;
 		$imgMgr = new ImageManager();
 		$imgList = $imgMgr->getImageList();
 		$item = $imgList->getItemsByNameMatch($imageName)[0]; //Get first Item in returned list
 		$itemRef = $item->getObject();
-		$rid = $itemRef->getImageResourceIdentifier();
-		$imgMgr->drawTimeStampOnImage($rid, $imageX, $imageY, $imageFont);
+		$image = $itemRef->getImageResourceIdentifier();
+		$imgMgr->drawTimeStampOnImage($image, $fontsize, $angle, $x, $y, $font);
 		
 		
 		header("Content-Type: image/png");
-		imagepng($rid);
+		imagepng($image);
 	}

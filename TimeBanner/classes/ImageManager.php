@@ -88,11 +88,14 @@
 		 * Accepts Value of type Integer
 		 * Represents the Y coordinate to draw on
 		 */
-		public function drawTimeStampOnImage($image, $x, $y, $font = 1, $string = null) {
-			$colorImg = imagecreate(1, 1);
-			$textColor = imagecolorallocate($colorImg, 0, 0, 0);
+		public function drawTimeStampOnImage($image, $size, $angle = 0, $x = 0, $y = 0, $fontfile = "Arial.ttf", $text = null, $color = 0) {
+			$colorImg = imagecreatetruecolor(1, 1);
+			$textColor = imagecolorexact($colorImg, 0, 0, 0);
 			
-			imagestring($image, $font, $x, $y, ($string !== NULL) ? $string : $this->GetTimeHHMM(), $textColor);
+			
+			imagefttext($image, $size, $angle, $x, $y, $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
+			
+			//imagestring($image, $font, $x, $y, ($string !== NULL) ? $string : $this->GetTimeHHMM(), $textColor);
 		}
 		
 		/**
