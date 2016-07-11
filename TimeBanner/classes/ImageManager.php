@@ -90,10 +90,10 @@
 		 */
 		public function drawTimeStampOnImage($image, $size, $angle = 0, $x = 0, $y = 0, $fontfile = "Arial.ttf", $text = null, $color = null) {
 			$colorImg = imagecreatetruecolor(1, 1);
-			$textColor = imagecolorexact($colorImg, 0, 0, 0);
+			$textColor = imagecolorexact($colorImg, 255, 255, 255);
 			
 			
-			imagefttext($image, $size, $angle, $x, $y, ($color = null) ? $textColor : $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
+			imagefttext($image, $size, $angle, $x, $y, ($color === null) ? $textColor : $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
 			
 			//imagestring($image, $font, $x, $y, ($string !== NULL) ? $string : $this->GetTimeHHMM(), $textColor);
 		}
