@@ -12,9 +12,11 @@
 	require_once 'classes/Image.php';
 	
 	$imageName;
-	$imageX;
-	$imageY;
-	$imageFont;
+	$fontsize;
+	$angle;
+	$x;
+	$y;
+	$font;
 	
 	if(isset($_GET)) {
 		try {

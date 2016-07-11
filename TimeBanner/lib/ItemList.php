@@ -73,7 +73,7 @@
 		 * @param mixed $key
 		 * Accepts values of type Integer or String
 		 */
-		public function addItem($object, $key = null, $name = null) {
+		public function addItem($object, $name = null, $key = null) {
 			if(isset($key)) {
 				$this->itemList[$key] = new Item($this->itemListCount, $object, $name);
 			} else {
@@ -225,7 +225,7 @@
 		public function getItemsByNameMatch($needle) {
 			$itemMatch = array();
 			foreach($this->itemList as $item) {
-				if((strcmp($item->getItemName(), $needle) !== false)) {
+				if((strpos($item->getItemName(), $needle) !== false)) {
 					$itemMatch[] = $item;
 				}
 			}

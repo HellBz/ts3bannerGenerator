@@ -33,7 +33,7 @@
 		private function prepareImageList() {
 			foreach(scandir($this->templateDirectory) as $templateFileName) {
 				if((strcmp($templateFileName, ".") !== 0) && (strcmp($templateFileName, "..") !== 0)) {
-					$this->imageList->addItem(new Image($this->templateDirectory, $templateFileName));
+					$this->imageList->addItem(new Image($this->templateDirectory, $templateFileName), $templateFileName);
 				}
 			}
 		}
@@ -88,12 +88,12 @@
 		 * Accepts Value of type Integer
 		 * Represents the Y coordinate to draw on
 		 */
-		public function drawTimeStampOnImage($image, $size, $angle = 0, $x = 0, $y = 0, $fontfile = "Arial.ttf", $text = null, $color = 0) {
+		public function drawTimeStampOnImage($image, $size, $angle = 0, $x = 0, $y = 0, $fontfile = "Arial.ttf", $text = null, $color = null) {
 			$colorImg = imagecreatetruecolor(1, 1);
 			$textColor = imagecolorexact($colorImg, 0, 0, 0);
 			
 			
-			imagefttext($image, $size, $angle, $x, $y, $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
+			imagefttext($image, $size, $angle, $x, $y, ($color = null) ? $textColor : $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
 			
 			//imagestring($image, $font, $x, $y, ($string !== NULL) ? $string : $this->GetTimeHHMM(), $textColor);
 		}
