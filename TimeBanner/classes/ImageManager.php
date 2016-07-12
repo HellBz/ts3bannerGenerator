@@ -45,6 +45,8 @@
 		 */
 		private function GetTimeHHMM() : string {
 			$dt = new DateTime();
+			$dtz = new DateTimeZone("EUROPE/Berlin");
+			$dt->setTimezone($dtz);
 			return $dt->format("H:i");
 		}
 		
@@ -90,7 +92,7 @@
 		 */
 		public function drawTimeStampOnImage($image, $size, $angle = 0, $x = 0, $y = 0, $fontfile = "Arial.ttf", $text = null, $color = null) {
 			$colorImg = imagecreatetruecolor(1, 1);
-			$textColor = imagecolorexact($colorImg, 255, 255, 255);
+			$textColor = imagecolorexactalpha($colorImg, 255, 255, 255, 1);
 			
 			
 			imagefttext($image, $size, $angle, $x, $y, ($color === null) ? $textColor : $color, "./fonts/" . $fontfile, ($text === null) ? $this->GetTimeHHMM() : $text);
